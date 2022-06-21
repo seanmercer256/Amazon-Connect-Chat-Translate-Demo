@@ -71,8 +71,9 @@ const Ccp = () => {
         upsert(languageTranslate, {contactId: contactId, lang: textLang})
         setLanguageTranslate(languageTranslate);
                 
-        // Translate the customer message into English.  (Portuguese for testing)
-        let translatedMessage = await translateText(content, textLang, 'pt');
+        // Translate the customer message into English.  (Change to combobox value for testing)
+        let agentLanguage = document.getElementById("preferredLanguage").value;
+        let translatedMessage = await translateText(content, textLang, agentLanguage);
         console.log(`CDEBUG ===>  Original Message: ` + content + `\n Translated Message: ` + translatedMessage);
         // create the new message to add to Chats.
         let data2 = {

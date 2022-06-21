@@ -67,7 +67,9 @@ const Chatroom = (props) => {
          
          ******************************************************************************************************/
 
-        let translatedMessageAPI = await translateTextAPI(newMessage, 'pt', destLang.lang, ['connectChatTranslate']); // Provide a custom terminology created outside of this deployment
+        let agentLanguage = document.getElementById("preferredLanguage").value;
+
+        let translatedMessageAPI = await translateTextAPI(newMessage, agentLanguage, destLang.lang, ['connectChatTranslate']); // Provide a custom terminology created outside of this deployment
         let translatedMessage = translatedMessageAPI.TranslatedText
 
         console.log(` Original Message: ` + newMessage + `\n Translated Message: ` + translatedMessage);
@@ -107,6 +109,15 @@ const Chatroom = (props) => {
     return (
         <div className="chatroom">
                 <h3>Translate - ({languageTranslate.map(lang => {if(lang.contactId === currentContactId[0])return lang.lang})}) {getKeyByValue(languageOptions)}</h3>
+                <select id="preferredLanguage" name="preferredLanguage" hdpp="preferred_language">
+                    <option value="en" selected="selected">English</option>
+                    <option value="pt">Português</option>
+                    <option value="fr-CA">Français</option>
+                    <option value="es-MX">Español</option>
+                    <option value="hu">Magyar</option>
+                    <option value="it">Italiano</option>
+                    <option value="de">Deutsch</option>
+                </select>
                 <ul className="chats" ref={messageEl}>
                 {
                         // iterate over the Chats, and only display the messages for the currently active chat session
