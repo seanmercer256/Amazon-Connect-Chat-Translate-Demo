@@ -112,8 +112,8 @@ const Chatroom = (props) => {
                 <select id="preferredLanguage" name="preferredLanguage" hdpp="preferred_language">
                     <option value="en" selected="selected">English</option>
                     <option value="pt">Português</option>
-                    <option value="fr-CA">Français</option>
-                    <option value="es-MX">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="es">Español</option>
                     <option value="hu">Magyar</option>
                     <option value="it">Italiano</option>
                     <option value="de">Deutsch</option>
