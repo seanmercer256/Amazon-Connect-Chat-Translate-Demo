@@ -5,6 +5,7 @@ import Predictions, { AmazonAIPredictionsProvider } from '@aws-amplify/predictio
 import awsconfig from '../aws-exports';
 import Chatroom from './chatroom';
 import translateText from './translate'
+import translateTextAPI from './translateAPI'
 import detectText from './detectText'
 import { addChat, setLanguageTranslate, clearChat, useGlobalState, setCurrentContactId } from '../store/state';
 
@@ -73,7 +74,10 @@ const Ccp = () => {
                 
         // Translate the customer message into English.  (Change to combobox value for testing)
         let agentLanguage = document.getElementById("preferredLanguage").value;
-        let translatedMessage = await translateText(content, textLang, agentLanguage);
+        //let translatedMessage = await translateText(content, textLang, agentLanguage);
+        // (smm) Use the API so we can leverage Formality
+        let translatedMessageAPI = await translateTextAPI(newMessage, textLang, agentLanguage, ['connectChatTranslate']); // Provide a custom terminology created outside of this deployment
+        let translatedMessage = translatedMessageAPI.TranslatedText
         console.log(`CDEBUG ===>  Original Message: ` + content + `\n Translated Message: ` + translatedMessage);
         // create the new message to add to Chats.
         let data2 = {
