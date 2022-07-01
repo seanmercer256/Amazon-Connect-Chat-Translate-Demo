@@ -15,7 +15,9 @@ exports.handler = (event, context, callback) => {
     /* required */
     Text: payload.content,
     /* required */
-    TerminologyNames: payload.terminologyNames
+    TerminologyNames: payload.terminologyNames,
+    /* (smm) hardcoding to use formal language whenever possible */
+    Settings: {"Formality": "FORMAL"}
   };
   console.log("parameters: " + JSON.stringify(params));
 
