@@ -76,7 +76,7 @@ const Ccp = () => {
         let agentLanguage = document.getElementById("preferredLanguage").value;
         //let translatedMessage = await translateText(content, textLang, agentLanguage);
         // (smm) Use the API so we can leverage Formality
-        let translatedMessageAPI = await translateTextAPI(newMessage, textLang, agentLanguage, ['connectChatTranslate']); // Provide a custom terminology created outside of this deployment
+        let translatedMessageAPI = await translateTextAPI(content, textLang, agentLanguage, ['connectChatTranslate']); // Provide a custom terminology created outside of this deployment
         let translatedMessage = translatedMessageAPI.TranslatedText
         console.log(`CDEBUG ===>  Original Message: ` + content + `\n Translated Message: ` + translatedMessage);
         // create the new message to add to Chats.
