@@ -9,15 +9,15 @@ exports.handler = (event, context, callback) => {
   // body: '{"content":"hello","sourceLang":"en","targetLang":"en"}'
 
   let params = {
+    /* (smm) hardcoding to use formal language whenever possible */
+    Settings: {Formality: "FORMAL"},
     SourceLanguageCode: payload.sourceLang,
     /* required */
     TargetLanguageCode: payload.targetLang,
     /* required */
     Text: payload.content,
     /* required */
-    TerminologyNames: payload.terminologyNames,
-    /* (smm) hardcoding to use formal language whenever possible */
-    Settings: {"Formality": "FORMAL"}
+    TerminologyNames: payload.terminologyNames
   };
   console.log("parameters: " + JSON.stringify(params));
 
